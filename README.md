@@ -5,9 +5,9 @@ A Claude Code skill that inspects multi-agent orchestration code — LangGraph, 
 ```mermaid
 flowchart LR
     subgraph skill [Agent Topology Skill]
-        A([Your Python\norchestration code]) --> B[[agent-topology]]
-        B --> C(Flow Diagram\nMermaid flowchart)
-        B --> D(Sequence Diagram\nMermaid sequenceDiagram)
+        A([Python orchestration code]) --> B[[agent-topology]]
+        B --> C(Flow Diagram)
+        B --> D(Sequence Diagram)
     end
 ```
 
@@ -128,10 +128,10 @@ Given a LangGraph research pipeline with a search → draft → critique loop:
 
 ```mermaid
 flowchart TD
-    subgraph LangGraph [Research Pipeline · StateGraph]
-        A([search\nsearch_agent])
-        B(draft\ndraft_agent)
-        C(critique\ncritique_agent)
+    subgraph LangGraph [Research Pipeline - StateGraph]
+        A([search])
+        B(draft)
+        C(critique)
         R[[router]]
         Z((END))
     end
@@ -141,11 +141,6 @@ flowchart TD
     C --> R
     R -->|accept| Z
     R -->|revise| B
-
-%% Legend
-%% ([x]) = Entry point   (x) = Agent/Worker
-%% [[x]] = Router        ((x)) = Terminal
-%% State schema: ResearchState
 ```
 
 ---
