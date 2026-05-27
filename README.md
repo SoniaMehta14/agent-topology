@@ -64,7 +64,7 @@ Once removed, the native renderer takes over automatically.
 Clone this repository directly into your global Claude skills directory:
 
 ```bash
-git clone https://github.com/<your-username>/agent-topology.git \
+git clone https://github.com/SoniaMehta14/agent-topology.git \
   ~/.claude/skills/agent-topology
 ```
 
