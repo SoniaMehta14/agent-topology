@@ -127,20 +127,26 @@ The skill auto-loads when your message matches any of these phrases:
 Given a LangGraph research pipeline with a search → draft → critique loop:
 
 ```mermaid
-flowchart TD
-    subgraph LangGraph [Research Pipeline - StateGraph]
-        A([search])
-        B(draft)
-        C(critique)
-        R[[router]]
-        Z((END))
+graph TD
+    accTitle: Agent Topology Mapping Flow
+    accDescr: A flowchart showing the routing between a supervisor and specialized worker agents with a validation memory loop.
+
+    User([User Prompt]) --> Supervisor[Orchestrator / Supervisor]
+    
+    subgraph Multi-Agent Workspace
+        Supervisor -->|Classify Intent| IntentClassifier{Router}
+        IntentClassifier -->|Billing Query| WorkerA[Billing Agent]
+        IntentClassifier -->|Technical Support| WorkerB[Technical Agent]
+        IntentClassifier -->|Refund Request| WorkerC[Refund Processor]
+        
+        WorkerA --> Memory[State / Short-Term Memory]
+        WorkerB --> Memory
+        WorkerC --> Memory
+        
+        Memory -->|Validation Loop| Supervisor
     end
 
-    A -->|search_results| B
-    B -->|draft| C
-    C --> R
-    R -->|accept| Z
-    R -->|revise| B
+    Supervisor --> FinalResponse([Final Action / Response])
 ```
 
 ---

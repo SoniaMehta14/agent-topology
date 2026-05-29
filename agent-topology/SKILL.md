@@ -228,11 +228,11 @@ graph.add_conditional_edges("critique", router, {"accept": END, "revise": "draft
 ````markdown
 ```mermaid
 flowchart TD
-    subgraph LangGraph [Research Pipeline · StateGraph]
+    subgraph LangGraph["Research Pipeline · StateGraph"]
         A([search\nsearch_agent])
         B(draft\ndraft_agent)
         C(critique\ncritique_agent)
-        R[[router]]
+        R{router}
         Z((END))
     end
 
